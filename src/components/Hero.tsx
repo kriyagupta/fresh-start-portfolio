@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Download } from "lucide-react";
 import profileImage from "@/assets/profile.png";
 
 const Hero = () => {
@@ -60,10 +61,12 @@ const Hero = () => {
                 View Projects
               </a>
               <a
-                href="#contact"
-                className="px-8 py-4 rounded-full font-semibold border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300"
+                href="/cv.pdf"
+                download="Kriya_Gupta_CV.pdf"
+                className="px-8 py-4 rounded-full font-semibold border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300 flex items-center gap-2"
               >
-                Contact Me
+                <Download className="w-5 h-5" />
+                Download CV
               </a>
             </motion.div>
           </motion.div>
