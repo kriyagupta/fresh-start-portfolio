@@ -35,21 +35,27 @@ const Contact = () => {
           className="max-w-2xl mx-auto"
         >
           <div className="grid sm:grid-cols-3 gap-6 mb-10">
-            <div className="flex flex-col items-center text-center p-6 bg-primary-foreground/10 rounded-xl backdrop-blur-sm">
+            <a
+              href="mailto:kriyagupta605@gmail.com"
+              className="flex flex-col items-center text-center p-6 bg-primary-foreground/10 rounded-xl backdrop-blur-sm hover:bg-primary-foreground/20 transition-colors cursor-pointer"
+            >
               <div className="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mb-4">
                 <Mail className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="text-primary-foreground/60 text-sm mb-1">Email</span>
-              <span className="text-primary-foreground font-medium text-sm">Contact via form</span>
-            </div>
+              <span className="text-primary-foreground font-medium text-sm">kriyagupta605@gmail.com</span>
+            </a>
 
-            <div className="flex flex-col items-center text-center p-6 bg-primary-foreground/10 rounded-xl backdrop-blur-sm">
+            <a
+              href="tel:+919125013315"
+              className="flex flex-col items-center text-center p-6 bg-primary-foreground/10 rounded-xl backdrop-blur-sm hover:bg-primary-foreground/20 transition-colors cursor-pointer"
+            >
               <div className="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mb-4">
                 <Phone className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="text-primary-foreground/60 text-sm mb-1">Phone</span>
-              <span className="text-primary-foreground font-medium text-sm">Available on request</span>
-            </div>
+              <span className="text-primary-foreground font-medium text-sm">+91 9125013315</span>
+            </a>
 
             <div className="flex flex-col items-center text-center p-6 bg-primary-foreground/10 rounded-xl backdrop-blur-sm">
               <div className="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mb-4">
