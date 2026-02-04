@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Folder } from "lucide-react";
 import virtualAssistantImg from "@/assets/virtual-assistant.png";
 import vegetableImg from "@/assets/vegetable-ecommerce.png";
 import jobPortalImg from "@/assets/job-portal.jpg";
@@ -55,8 +55,11 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Portfolio</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mt-3">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full font-semibold text-sm uppercase tracking-wider mb-4">
+            <Folder className="w-4 h-4" />
+            Portfolio
+          </span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
             Featured Projects
           </h2>
         </motion.div>
@@ -76,30 +79,30 @@ const Projects = () => {
               >
                 <CardWrapper
                   {...cardProps}
-                  className="group block bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-500 hover:-translate-y-2 border border-border"
+                  className="group block bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-500 hover:-translate-y-2 border border-border hover:border-primary/30"
                 >
                   {/* Project Image */}
-                  <div className="h-48 overflow-hidden relative">
+                  <div className="h-52 overflow-hidden relative">
                     <img 
                       src={project.image} 
                       alt={project.title}
                       className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    {project.link && (
+                      <div className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <ExternalLink className="w-4 h-4 text-primary" />
+                      </div>
+                    )}
                   </div>
 
                   {/* Project Content */}
                   <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                          {project.title}
-                        </h3>
-                        <span className="text-sm text-muted-foreground">{project.subtitle}</span>
-                      </div>
-                      {project.link && (
-                        <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                      )}
+                    <div className="mb-3">
+                      <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <span className="text-sm text-primary font-medium">{project.subtitle}</span>
                     </div>
 
                     <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
@@ -110,7 +113,7 @@ const Projects = () => {
                       {project.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
+                          className="px-3 py-1.5 bg-muted text-muted-foreground rounded-lg text-xs font-medium border border-border"
                         >
                           {tech}
                         </span>

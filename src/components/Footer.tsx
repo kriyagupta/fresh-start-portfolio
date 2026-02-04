@@ -1,5 +1,3 @@
-import { Heart } from "lucide-react";
-
 const Footer = () => {
   return (
     <footer className="bg-foreground py-8">
@@ -8,10 +6,6 @@ const Footer = () => {
           <div className="font-display font-bold text-xl text-background">
             Kriya<span className="gradient-text"> Gupta</span>
           </div>
-
-          <p className="flex items-center gap-2 text-background/60 text-sm">
-            Made with <Heart className="w-4 h-4 text-destructive fill-destructive" /> by Kriya Gupta
-          </p>
 
           <p className="text-background/60 text-sm">
             © {new Date().getFullYear()} All rights reserved.
