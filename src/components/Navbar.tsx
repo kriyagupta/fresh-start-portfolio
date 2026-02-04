@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Github, Linkedin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,30 +56,6 @@ const Navbar = () => {
               </a>
             ))}
             
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              <a
-                href="https://github.com/kriyagupta"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-2 rounded-full transition-colors hover:bg-primary/20 ${
-                  isScrolled ? "text-foreground" : "text-primary-foreground/80"
-                }`}
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/kriya-gupta-1a1364293/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-2 rounded-full transition-colors hover:bg-primary/20 ${
-                  isScrolled ? "text-foreground" : "text-primary-foreground/80"
-                }`}
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-            </div>
-            
             <a
               href="#contact"
               className="gradient-bg px-5 py-2 rounded-full font-semibold text-primary-foreground shadow-soft hover:shadow-hover transition-all duration-300"
@@ -116,26 +92,6 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              
-              {/* Social Links in Mobile */}
-              <div className="flex items-center gap-4 px-4 py-2">
-                <a
-                  href="https://github.com/kriyagupta"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/kriya-gupta-1a1364293/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
               
               <a
                 href="#contact"
