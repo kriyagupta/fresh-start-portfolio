@@ -22,11 +22,11 @@ const Hero = () => {
           >
             <div className="relative">
               <div className="absolute inset-0 gradient-bg rounded-full blur-2xl opacity-50 scale-110" />
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-foreground/20 shadow-card">
+              <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-primary-foreground/20 shadow-card">
                 <img
                   src={profileImage}
                   alt="Kriya Gupta"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top scale-125"
                 />
               </div>
             </div>
