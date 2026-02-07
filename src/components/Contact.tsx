@@ -1,17 +1,36 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, Linkedin, Github } from "lucide-react";
-import { useState } from "react";
+import { Mail, MapPin, Send, Linkedin, Github, Loader2 } from "lucide-react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
+
+const SERVICE_ID = "service_tqsl4gq";
+const TEMPLATE_ID = "template_tcpx0z8";
+const PUBLIC_KEY = "H1XXZ9S6E3BbSOKGu";
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:kriyagupta605@gmail.com?subject=Message from ${formData.name}&body=${formData.message}`;
+    if (!formRef.current) return;
+    setSending(true);
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -110,11 +129,12 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-8"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-primary-foreground font-medium mb-2">Name</label>
                 <input
                   type="text"
+                  name="from_name"
                   placeholder="Your name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -127,6 +147,7 @@ const Contact = () => {
                 <label className="block text-primary-foreground font-medium mb-2">Email</label>
                 <input
                   type="email"
+                  name="from_email"
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -138,6 +159,7 @@ const Contact = () => {
               <div>
                 <label className="block text-primary-foreground font-medium mb-2">Message</label>
                 <textarea
+                  name="message"
                   placeholder="Tell me about your project or opportunity..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -149,10 +171,11 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full gradient-bg text-primary-foreground py-4 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-hover transition-all duration-300"
+                disabled={sending}
+                className="w-full gradient-bg text-primary-foreground py-4 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-hover transition-all duration-300 disabled:opacity-60"
               >
-                <Send className="w-5 h-5" />
-                Send Message
+                {sending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
+                {sending ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>
