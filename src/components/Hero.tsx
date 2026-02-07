@@ -26,7 +26,7 @@ const Hero = () => {
                 <img
                   src={profileImage}
                   alt="Kriya Gupta"
-                  className="w-full h-full object-cover object-top scale-125"
+                  className="w-full h-full object-cover object-top scale-100"
                 />
               </div>
             </div>
